@@ -4,15 +4,17 @@
 set -e
 
 # define pacman packages
-pacman_packages="unzip unrar librsvg pygtk python2-service-identity python2-mako python2-notify deluge"
+pacman_packages="python2-pip"
 
 # install pre-reqs
 pacman -Sy --noconfirm
 pacman -S --needed $pacman_packages --noconfirm
 
+pip2 install flexget
+
 # set permissions
-chown -R nobody:users /home/nobody /usr/bin/deluged /usr/bin/deluge-web
-chmod -R 775 /home/nobody /usr/bin/deluged /usr/bin/deluge-web
+chown -R nobody:users /home/nobody /usr/bin/flexget
+chmod -R 775 /home/nobody /usr/bin/flexget
 
 # cleanup
 yes|pacman -Scc
